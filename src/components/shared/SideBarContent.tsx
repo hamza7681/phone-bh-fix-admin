@@ -46,7 +46,7 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
       {/* mobile screen start */}
       <div className={`${collapsed1 ? 'flex opacity-[1]' : 'hidden opacity-0'} p-3 w-full flex-col`}>
         <div className='relative flex items-center'>
-          <Image src={logo} alt='logo' className='w-[150px] lg:w-[200px]' />
+          <Image src={logo} alt='logo' className='w-[150px] lg:w-[200px]' loading='eager' />
           <div className='flex justify-end lg:hidden p-5 absolute right-0 ' onClick={() => setCollapsed1(false)}>
             <FaTimes className='text-white' />
           </div>
@@ -106,7 +106,7 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
       {/* pc screen start  */}
       <div className={`${collapsed ? 'lg:flex opacity-[1]' : 'lg:hidden opacity-0'} p-3 w-full flex-col hidden`}>
         <div className='relative flex items-center'>
-          <Image src={logo} alt='logo' className='w-[150px] lg:w-[200px]' />
+          <Image src={logo} alt='logo' className='w-[150px] lg:w-[200px]' loading='eager' />
           <div className='flex justify-end lg:hidden p-5 absolute right-0 ' onClick={() => setCollapsed1(false)}>
             <FaTimes className='text-white' />
           </div>
