@@ -1,13 +1,13 @@
 'use client'
 
-import React, { FormEvent, useRef, useState } from 'react'
+import React, { FC, FormEvent, useRef, useState } from 'react'
 import logo from '../../public/assets/logo_black.webp'
 import { Toast } from 'primereact/toast'
 import { SyncLoader } from 'react-spinners'
 import axios from 'axios'
 import Image from 'next/image'
 
-const LoginPage = () => {
+const LoginPage: FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [show, setShow] = useState(false)

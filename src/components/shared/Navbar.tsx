@@ -1,11 +1,11 @@
 'use client'
 
-import React, { MouseEvent, useState } from 'react'
+import React, { FC, MouseEvent, useState } from 'react'
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import { FaBars } from 'react-icons/fa'
 import SideBarContent from './SideBarContent'
 
-const Navbar = () => {
+const Navbar: FC = () => {
   const [collapsed, setCollapsed] = useState(true)
   const [collapsed1, setCollapsed1] = useState(false)
 

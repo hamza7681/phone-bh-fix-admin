@@ -1,7 +1,7 @@
 import Navbar from '@/components/shared/Navbar'
 import React, { FC } from 'react'
 
-const Dashboard: FC = () => {
+const CategoryList: FC = () => {
   return (
     <div>
       <Navbar />
@@ -9,4 +9,4 @@ const Dashboard: FC = () => {
   )
 }
 
-export default Dashboard
+export default CategoryList

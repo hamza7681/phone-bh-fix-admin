@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { ElementType, FC, useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import logo from '../../../public/assets/logo.webp'
 import { SidebarData } from '../../libs/SidebarData'
@@ -36,6 +36,11 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
     }
   }
 
+  const Icon: FC<{ name: ElementType }> = ({ name }) => {
+    const IconComponent = name
+    return <IconComponent />
+  }
+
   return (
     <>
       {/* mobile screen start */}
@@ -56,7 +61,9 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                     pathname === val.path ? 'bg-[#F0841E]' : ''
                   } `}>
                   <div className='flex items-center gap-2 justify-start'>
-                    <span className='text-[#ffffff]'>{val.icon}</span>
+                    <span className='text-[#ffffff]'>
+                      <Icon name={val.icon} />
+                    </span>
                     <p className='text-base text-[#ffffff] font-semibold'>{val.name}</p>
                   </div>
                   {val.children.length > 0 && <BsChevronDown color='white' />}
@@ -78,7 +85,9 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                               pathname === child.path ? 'bg-[#F0841E]' : ''
                             } `}>
                             <div className='flex items-center gap-2 justify-start'>
-                              <span className='text-[#ffffff]'>{child.icon}</span>
+                              <span className='text-[#ffffff]'>
+                                <Icon name={val.icon} />
+                              </span>
                               <p className='text-base text-[#ffffff]'>{child.name}</p>
                             </div>
                           </div>
@@ -112,7 +121,9 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                     pathname === val.path ? 'bg-[#F0841E]' : ''
                   } `}>
                   <div className='flex items-center gap-2 justify-start'>
-                    <span className='text-[#ffffff]'>{val.icon}</span>
+                    <span className='text-[#ffffff]'>
+                      <Icon name={val.icon} />
+                    </span>
                     <p className='text-base text-[#ffffff] font-semibold'>{val.name}</p>
                   </div>
                   {val.children.length > 0 && <BsChevronDown color='white' />}
@@ -134,7 +145,9 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                               pathname === child.path ? 'bg-[#F0841E]' : ''
                             } `}>
                             <div className='flex items-center gap-2 justify-start'>
-                              <span className='text-[#ffffff]'>{child.icon}</span>
+                              <span className='text-[#ffffff]'>
+                                <Icon name={val.icon} />
+                              </span>
                               <p className='text-base text-[#ffffff]'>{child.name}</p>
                             </div>
                           </div>
