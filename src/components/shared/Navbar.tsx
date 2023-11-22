@@ -5,10 +5,13 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import { FaBars, FaRegUser } from 'react-icons/fa'
 import SideBarContent from './SideBarContent'
 import { useDispatch, useSelector } from 'react-redux'
-import Image from 'next/image'
 import { MdLogout } from 'react-icons/md'
 import { logout } from '@/redux/reducers/authslice'
 import { deleteCookie } from 'cookies-next'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/navigation'
+
+const ImageNoSSR = dynamic(() => import('@/components/shared/ImageRender'), { ssr: false })
 
 const Navbar: FC = () => {
   const [collapsed, setCollapsed] = useState(true)
@@ -16,11 +19,12 @@ const Navbar: FC = () => {
   const { user } = useSelector((s: any) => s.auth)
   const [profileDrop, setProfileDrop] = useState(false)
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const handleLogout = () => {
     dispatch(logout())
     deleteCookie('token')
-    window.location.reload()
+    router.replace('/')
   }
 
   const toggleBar = (e: MouseEvent<HTMLButtonElement>) => {
@@ -65,7 +69,7 @@ const Navbar: FC = () => {
           <div
             className='relative h-12 w-12 rounded-full border-[1px] border-gray-200  cursor-pointer'
             onClick={() => setProfileDrop((prev) => !prev)}>
-            {user && <Image src={user?.avatar} alt='dp' width={48} height={48} />}
+            <ImageNoSSR avatar={user?.avatar} />
             <div
               className={`${
                 profileDrop ? 'h-[90px] border-[1px]' : 'h-0 border-0'
