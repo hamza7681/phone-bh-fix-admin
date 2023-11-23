@@ -1,5 +1,6 @@
 import { ChangeEvent } from 'react'
 import { Brand } from './componentTypes'
+import { Url } from 'next/dist/shared/lib/router/router'
 
 export type SideBarProps = {
   setCollapsed1: (collapsed1: boolean) => void
@@ -10,7 +11,7 @@ export type SideBarProps = {
 export type BreadCrumbsProps = {
   parent: string
   child?: string
-  path?: string
+  path?: Url
 }
 
 export type FormInputProps = {
