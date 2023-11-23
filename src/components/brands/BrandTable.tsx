@@ -20,7 +20,7 @@ const BrandTable = () => {
   useEffect(() => {
     const getBrands = async () => {
       try {
-        const res = await axios.get('/api/brands/get-list')
+        const res = await axios.post('/api/brands/get-list', { temp: '' })
         if (res) {
           const modifiedData = res.data.brands.map((x: any, i: number) => {
             x.srNo = i + 1

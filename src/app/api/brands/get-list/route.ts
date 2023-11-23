@@ -12,12 +12,12 @@ interface Brand {
   brandImage: String
 }
 
-export const GET = async (req: NextRequest): Promise<NewResponse | undefined> => {
+export const POST = async (req: NextRequest): Promise<NewResponse | undefined> => {
   try {
     await authenticate()
+    const { temp } = (await req.json()) as { temp: string }
     const brands = await Brand.find()
     return NextResponse.json({
-      msg: 'Brand added successfully',
       status: StatusCodes.OK,
       brands: convertBrandData(brands),
     })
