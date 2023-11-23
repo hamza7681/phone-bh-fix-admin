@@ -11,7 +11,7 @@ export type SideBarProps = {
 export type BreadCrumbsProps = {
   parent: string
   child?: string
-  path?: Url
+  path: Url
 }
 
 export type FormInputProps = {

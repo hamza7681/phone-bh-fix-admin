@@ -41,7 +41,7 @@ const EditBrandForm: FC = () => {
       }
     }
     getSingleBrand()
-  }, [])
+  }, [id])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -49,7 +49,7 @@ const EditBrandForm: FC = () => {
     try {
       if (!brandName || brandName === '') {
         toast.error('Please enter brand name')
-        // setLoading(false)
+        setLoading(false)
       } else {
         if (file) {
           const formData = new FormData()
