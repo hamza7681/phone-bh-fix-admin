@@ -12,11 +12,10 @@ interface Brand {
   brandImage: String
 }
 
-export const GET = async (req: NextRequest): Promise<NewResponse | undefined> => {
+export const POST = async (req: NextRequest): Promise<NewResponse | undefined> => {
   try {
     await authenticate()
-    const { searchParams } = new URL(req.url)
-    const id = searchParams.get('id')
+    const { id } = (await req.json()) as { id: string }
     const brand = await Brand.findById(id)
     if (brand) {
       return NextResponse.json({

@@ -31,7 +31,7 @@ const EditBrandForm: FC = () => {
   useEffect(() => {
     const getSingleBrand = async () => {
       try {
-        const res = await axios.get(`/api/brands/get-brand?id=${id}`)
+        const res = await axios.post(`/api/brands/get-brand`, { id })
         if (res) {
           setBrandName(res.data.brand.brandName)
           setImageUrl(res.data.brand.brandImage)
