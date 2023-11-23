@@ -36,7 +36,7 @@ const Navbar: FC = () => {
     <div className='flex w-full'>
       <div
         className={`${
-          collapsed1 ? 'w-[300px] lg:w-[20%]' : 'w-0'
+          collapsed1 ? 'w-[300px] lg:w-[15%]' : 'w-0'
         } z-10 bg-gray-700 block lg:hidden border-r-[1px] h-screen fixed top-0 lg:sticky lg:top-0 border-r-gray-200 transition-all duration-200`}>
         <div
           onClick={() => setCollapsed(!collapsed)}
@@ -49,7 +49,7 @@ const Navbar: FC = () => {
       </div>
       <div
         className={`${
-          collapsed ? 'w-[300px] lg:w-[20%]' : 'w-0'
+          collapsed ? 'w-[300px] lg:w-[15%]' : 'w-0'
         } z-10 bg-gray-700 hidden lg:flex border-r-[1px] h-screen fixed top-0 lg:sticky lg:top-0 border-r-gray-200 transition-all duration-200`}>
         <div
           onClick={() => setCollapsed(!collapsed)}
@@ -60,7 +60,7 @@ const Navbar: FC = () => {
         </div>
         <SideBarContent setCollapsed1={setCollapsed1} collapsed1={collapsed1} collapsed={collapsed} />
       </div>
-      <div className={`${collapsed ? 'w-full lg:w-[80%]' : 'w-full'} transition-all duration-200`}>
+      <div className={`${collapsed ? 'w-full lg:w-[85%]' : 'w-full'} transition-all duration-200`}>
         <div className='h-16 shadow-lg flex justify-between items-center px-4 sticky top-0 bg-white'>
           <div className='flex justify-start items-center gap-3'>
             <FaBars onClick={toggleBar} className='lg:hidden block text-gray-700' size={22} />

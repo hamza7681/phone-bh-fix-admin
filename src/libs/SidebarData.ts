@@ -82,4 +82,11 @@ export const SidebarData: any[] = [
       },
     ],
   },
+  {
+    name: 'Contact Support',
+    icon: GoChecklist,
+    path: '/contact-support',
+    isChildOpen: false,
+    children: [],
+  },
 ]
