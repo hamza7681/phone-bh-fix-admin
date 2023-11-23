@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, MouseEvent, useState } from 'react'
+import React, { FC, MouseEvent, ReactNode, useState } from 'react'
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import { FaBars, FaRegUser } from 'react-icons/fa'
 import SideBarContent from './SideBarContent'
@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation'
 
 const ImageNoSSR = dynamic(() => import('@/components/shared/ImageRender'), { ssr: false })
 
-const Navbar: FC = () => {
+const Navbar = ({ children }: { children: ReactNode }) => {
   const [collapsed, setCollapsed] = useState(true)
   const [collapsed1, setCollapsed1] = useState(false)
   const { user } = useSelector((s: any) => s.auth)
@@ -86,7 +86,7 @@ const Navbar: FC = () => {
           </div>
         </div>
         {/* main  */}
-        <div className='flex flex-col lg:p-6 p-4'>Dashboard</div>
+        <div className='flex flex-col lg:p-6 p-4'>{children}</div>
       </div>
     </div>
   )

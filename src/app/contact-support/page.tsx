@@ -19,7 +19,7 @@ const Contact: FC = () => {
     }
   }, [])
 
-  return <>{loading ? <GlobalLoader /> : <Navbar />}</>
+  return <>{loading ? <GlobalLoader /> : <Navbar>Hello</Navbar>}</>
 }
 
 export default Contact

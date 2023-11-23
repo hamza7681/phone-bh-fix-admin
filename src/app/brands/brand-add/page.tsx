@@ -1,5 +1,7 @@
 'use client'
 
+import AddBrandForm from '@/components/brands/AddBrandForm'
+import BreadCrumbs from '@/components/shared/BreadCrumbs'
 import GlobalLoader from '@/components/shared/GlobalLoader'
 import Navbar from '@/components/shared/Navbar'
 import { useRouter } from 'next/navigation'
@@ -19,7 +21,21 @@ const BrandAdd: FC = () => {
     }
   }, [])
 
-  return <>{loading ? <GlobalLoader /> : <Navbar />}</>
+  return (
+    <>
+      {loading ? (
+        <GlobalLoader />
+      ) : (
+        <Navbar>
+          <div className='flex flex-col'>
+            <BreadCrumbs parent='Brands' child='Add Brand' path='/brands/brand-list' />
+            <h1 className='text-[#F0841E] text-[22px] font-semibold'>Add Brand</h1>
+            <AddBrandForm />
+          </div>
+        </Navbar>
+      )}
+    </>
+  )
 }
 
 export default BrandAdd

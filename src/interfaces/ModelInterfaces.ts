@@ -13,3 +13,8 @@ export interface UserDocument extends Document {
   country: String
   zipCode: Number
 }
+
+export interface BrandDocument extends Document {
+  brandName: String
+  brandImage: String
+}

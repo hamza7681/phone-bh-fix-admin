@@ -66,9 +66,13 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                     </span>
                     <p className='text-base text-[#ffffff] font-semibold'>{val.name}</p>
                   </div>
-                  {val.children.length > 0 && <BsChevronDown color='white' />}
+                  {val.children.length > 0 && (
+                    <BsChevronDown
+                      color='white'
+                      className={`${val.isChildOpen ? 'rotate-180' : 'rotate-0'} transition-all duration-200 `}
+                    />
+                  )}
                 </div>
-
                 <div
                   onClick={(e) => {
                     e.stopPropagation()
@@ -126,9 +130,13 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                     </span>
                     <p className='text-base text-[#ffffff] font-semibold'>{val.name}</p>
                   </div>
-                  {val.children.length > 0 && <BsChevronDown color='white' />}
+                  {val.children.length > 0 && (
+                    <BsChevronDown
+                      color='white'
+                      className={`${val.isChildOpen ? 'rotate-180' : 'rotate-0'} transition-all duration-200 `}
+                    />
+                  )}
                 </div>
-
                 <div
                   onClick={(e) => {
                     e.stopPropagation()
