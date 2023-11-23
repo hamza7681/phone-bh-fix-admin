@@ -6,6 +6,7 @@ export interface RouteResponse {
   token?: String
   error?: any
   user?: UserData | null
+  brands?: BrandData | null
 }
 
 export interface UserRegisterRequest {
@@ -36,4 +37,10 @@ export type UserData = {
 
 export type ProfileRequest = {
   token: string
+}
+
+export type BrandData = {
+  _id: Types.ObjectId
+  brandName?: string
+  brandImage?: string
 }

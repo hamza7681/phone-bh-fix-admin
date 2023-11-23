@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react'
+import { Brand } from './componentTypes'
 
 export type SideBarProps = {
   setCollapsed1: (collapsed1: boolean) => void
@@ -8,8 +9,8 @@ export type SideBarProps = {
 
 export type BreadCrumbsProps = {
   parent: string
-  child: string
-  path: string
+  child?: string
+  path?: string
 }
 
 export type FormInputProps = {
@@ -21,3 +22,12 @@ export type FormInputProps = {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void
   name?: string
 }
+
+export type DeleteDialogProps = {
+  visible: boolean
+  setVisible: (visible: boolean) => void
+  handleDelete: () => void
+  loading: boolean
+}
+
+type SetBrands = (newBrands: Brand[]) => void

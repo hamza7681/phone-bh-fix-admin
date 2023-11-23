@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import User from '@/models/userModel'
 import { StatusCodes } from 'http-status-codes'
 import jwt from 'jsonwebtoken'
-import { convertUserData } from '@/libs/convertUserData'
+import { convertUserData } from '@/libs/dataConversion'
 
 type NewResponse = NextResponse<RouteResponse>
 const SECRET = process.env.JWT_SECRET

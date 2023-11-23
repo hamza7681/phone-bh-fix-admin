@@ -1,17 +1,13 @@
 import { authenticate } from '@/database/config'
 import { RouteResponse } from '@/interfaces/RouteInterfaces'
 import { NextRequest, NextResponse } from 'next/server'
-import User from '@/models/userModel'
+import Brand from '@/models/brandModel'
 import { StatusCodes } from 'http-status-codes'
 import jwt from 'jsonwebtoken'
-import { convertUserData } from '@/libs/dataConversion'
+import { convertSingleBrandData } from '@/libs/dataConversion'
 
 type NewResponse = NextResponse<RouteResponse>
 const SECRET = process.env.JWT_SECRET
-
-interface Avatar {
-  avatar: String
-}
 
 export const POST = async (req: NextRequest): Promise<NewResponse | undefined> => {
   try {
@@ -19,8 +15,7 @@ export const POST = async (req: NextRequest): Promise<NewResponse | undefined> =
     const token = req.headers.get('authorization')
     let userId: string | null = null
     if (token) {
-      const { avatar } = (await req.json()) as Avatar
-      console.log(avatar)
+      const { id } = (await req.json()) as { id: string }
       jwt.verify(token, SECRET as string, (err, user) => {
         if (err) {
           return NextResponse.json({ msg: 'Invalid Token', status: StatusCodes.UNAUTHORIZED })
@@ -30,11 +25,11 @@ export const POST = async (req: NextRequest): Promise<NewResponse | undefined> =
         }
       })
       if (userId) {
-        const res = await User.findByIdAndUpdate(userId, { avatar: avatar }, { new: true })
+        const brand = await Brand.findByIdAndDelete(id)
         return NextResponse.json({
-          msg: 'Profile picture updated successfully',
+          msg: 'Brand deleted successfully',
           status: StatusCodes.OK,
-          user: convertUserData(res),
+          brand: convertSingleBrandData(brand),
         })
       }
     } else {

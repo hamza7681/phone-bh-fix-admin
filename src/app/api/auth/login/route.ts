@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 import User from '@/models/userModel'
 import { StatusCodes } from 'http-status-codes'
 import jwt from 'jsonwebtoken'
-import { convertUserData } from '@/libs/convertUserData'
+import { convertUserData } from '@/libs/dataConversion'
 import { LoginUserRequest, RouteResponse } from '@/interfaces/RouteInterfaces'
 
 type NewResponse = NextResponse<RouteResponse>
