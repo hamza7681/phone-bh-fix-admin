@@ -64,7 +64,7 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                     <span className='text-[#ffffff]'>
                       <Icon name={val.icon} />
                     </span>
-                    <p className='text-base text-[#ffffff] font-semibold'>{val.name}</p>
+                    <p className='text-sm text-[#ffffff] font-semibold'>{val.name}</p>
                   </div>
                   {val.children.length > 0 && (
                     <BsChevronDown
@@ -92,7 +92,7 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                               <span className='text-[#ffffff]'>
                                 <Icon name={val.icon} />
                               </span>
-                              <p className='text-base text-[#ffffff]'>{child.name}</p>
+                              <p className='text-sm text-[#ffffff]'>{child.name}</p>
                             </div>
                           </div>
                         )
@@ -108,9 +108,9 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
       {/* mobile screen end  */}
 
       {/* pc screen start  */}
-      <div className={`${collapsed ? 'lg:flex opacity-[1]' : 'lg:hidden opacity-0'} p-3 w-full flex-col hidden`}>
-        <div className='relative flex items-center'>
-          <Image src={logo} alt='logo' className='w-[150px] lg:w-[200px]' loading='eager' />
+      <div className={`${collapsed ? 'lg:flex opacity-[1]' : 'lg:hidden opacity-0'} p-1 w-full flex-col hidden`}>
+        <div className='relative flex justify-center items-center'>
+          <Image src={logo} alt='logo' className='w-[150px] lg:w-[170px]' loading='eager' />
           <div className='flex justify-end lg:hidden p-5 absolute right-0 ' onClick={() => setCollapsed1(false)}>
             <FaTimes className='text-white' />
           </div>
@@ -119,7 +119,7 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
         <div className='flex flex-col gap-2'>
           {sidebarContent.map((val, i) => {
             return (
-              <div onClick={() => handleParentItem(val)} key={i} className=' flex flex-col'>
+              <div onClick={() => handleParentItem(val)} key={i} className='flex flex-col'>
                 <div
                   className={`flex items-center justify-between  py-2 px-3  cursor-pointer hover:bg-[#F0841E] transition-all duration-200 rounded-[4px] ${
                     pathname === val.path ? 'bg-[#F0841E]' : ''
@@ -128,7 +128,7 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                     <span className='text-[#ffffff]'>
                       <Icon name={val.icon} />
                     </span>
-                    <p className='text-base text-[#ffffff] font-semibold'>{val.name}</p>
+                    <p className='text-sm text-[#ffffff] font-semibold'>{val.name}</p>
                   </div>
                   {val.children.length > 0 && (
                     <BsChevronDown
@@ -156,7 +156,7 @@ const SideBarContent: FC<SideBarProps> = ({ setCollapsed1, collapsed1, collapsed
                               <span className='text-[#ffffff]'>
                                 <Icon name={val.icon} />
                               </span>
-                              <p className='text-base text-[#ffffff]'>{child.name}</p>
+                              <p className='text-sm text-[#ffffff]'>{child.name}</p>
                             </div>
                           </div>
                         )
