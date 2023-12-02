@@ -8,33 +8,17 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'next/navigation'
 
 const EditBrandForm: FC = () => {
-  const [brandName, setBrandName] = useState('')
-  const [file, setFile] = useState<Blob | string>()
-  const [imageUrl, setImageUrl] = useState('')
+  const [categoryName, setCategoryName] = useState('')
   const [loading, setLoading] = useState(false)
   const { token } = useSelector((s: any) => s.auth)
   const { id } = useParams()
-
-  const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    if (files && files.length > 0) {
-      const file = files[0]
-      setFile(file)
-      const reader = new FileReader()
-      reader.onload = (event) => {
-        setImageUrl(event.target?.result as string)
-      }
-      reader.readAsDataURL(file)
-    }
-  }
 
   useEffect(() => {
     const getSingleBrand = async () => {
       try {
         const res = await axios.post(`/api/brands/get-brand`, { id })
         if (res) {
-          setBrandName(res.data.brand.brandName)
-          setImageUrl(res.data.brand.brandImage)
+          setCategoryName(res.data.brand.brandName)
         }
       } catch (error) {
         console.log(error)
