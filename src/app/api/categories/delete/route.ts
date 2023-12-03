@@ -1,16 +1,13 @@
 import { authenticate } from "@/database/config";
 import { RouteResponse } from "@/interfaces/RouteInterfaces";
 import { NextRequest, NextResponse } from "next/server";
+import Category from "@/models/categoryModel";
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
-import Category from "@/models/categoryModel";
+import { convertSingleCategoryData } from "@/libs/dataConversion";
 
 type NewResponse = NextResponse<RouteResponse>;
 const SECRET = process.env.JWT_SECRET;
-
-interface Category {
-  categoryName: String;
-}
 
 export const POST = async (
   req: NextRequest
@@ -20,9 +17,7 @@ export const POST = async (
     const token = req.headers.get("authorization");
     let userId: string | null = null;
     if (token) {
-      const { categoryName } = (await req.json()) as Category;
-      const { searchParams } = new URL(req.url);
-      const id = searchParams.get("id");
+      const { id } = (await req.json()) as { id: string };
       jwt.verify(token, SECRET as string, (err, user) => {
         if (err) {
           return NextResponse.json({
@@ -35,10 +30,11 @@ export const POST = async (
         }
       });
       if (userId) {
-        await Category.findByIdAndUpdate(id, { categoryName: categoryName });
+        const category = await Category.findByIdAndDelete(id);
         return NextResponse.json({
-          msg: "Category updated successfully",
+          msg: "CategoryDe deleted successfully",
           status: StatusCodes.OK,
+          category: convertSingleCategoryData(category),
         });
       }
     } else {

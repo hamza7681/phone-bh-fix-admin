@@ -1,4 +1,3 @@
-import { Category } from "@/models/categoryModel";
 import {
   BrandData,
   CategoryData,
@@ -37,6 +36,13 @@ export const convertSingleBrandData = (brand: any): BrandData => {
     _id: brand._id as Types.ObjectId,
     brandImage: brand.brandImage as string,
     brandName: brand.brandName as string,
+  };
+};
+
+export const convertSingleCategoryData = (category: any): CategoryData => {
+  return {
+    _id: category._id as Types.ObjectId,
+    categoryName: category.categoryName as string,
   };
 };
 
