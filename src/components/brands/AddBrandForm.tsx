@@ -10,7 +10,7 @@ const AddBrandForm = () => {
   const [brandName, setBrandName] = useState("");
   const [file, setFile] = useState<Blob | string>();
   const [imageUrl, setImageUrl] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { token } = useSelector((s: any) => s.auth);
 
   const handleImage = (e: ChangeEvent<HTMLInputElement>) => {

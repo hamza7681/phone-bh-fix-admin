@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const AddCategoryForm = () => {
   const [categoryName, setCategoryName] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { token } = useSelector((s: any) => s.auth);
 
   const handleSubmit = async (e: FormEvent) => {

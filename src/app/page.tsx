@@ -11,6 +11,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login } from '@/redux/reducers/authslice'
 import { useRouter } from 'next/navigation'
 import GlobalLoader from '@/components/shared/GlobalLoader'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '@/firebase/config'
+import { singleDataFireStore } from '@/utils/singleDataFireStore'
 
 const LoginPage: FC = () => {
   const [email, setEmail] = useState('')
@@ -33,28 +36,24 @@ const LoginPage: FC = () => {
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    try {
-      console.log(email, password)
-      const res = await axios.post('/api/auth/login', { email, password })
-      if (res.data.status === 400) {
-        toast.error(res.data.msg)
+    await signInWithEmailAndPassword(auth, email, password)
+      .then(async (res:any) => {
+        const user = await singleDataFireStore('email', email, 'users')
+        dispatch(login({ token: res.user.accessToken, user: user }))
+        router.push('/dashboard')
         setLoading(false)
-      } else {
-        setLoading(false)
-        if (res.data.user.role !== 'admin') {
-          toast.error('Only admin can login!')
-        } else {
-          toast.success(res.data.msg)
-          setCookie('token', res.data.token)
-          dispatch(login({ token: res.data.token, user: res.data.user }))
-          router.replace('/dashboard')
+      })
+      .catch((error) => {
+        console.log(error.message)
+        if (
+          error.message === 'Firebase: Error (auth/invalid-email).' ||
+          error.message === 'Firebase: Error (auth/missing-password).' ||
+          error.message === 'Firebase: Error (auth/invalid-credential).'
+        ) {
+          toast.error('Invalid email/password')
         }
-      }
-    } catch (error: any) {
-      console.log(error)
-      setLoading(false)
-      toast.error(error.message)
-    }
+        setLoading(false)
+      })
   }
 
   return (

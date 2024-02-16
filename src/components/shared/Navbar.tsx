@@ -74,7 +74,7 @@ const Navbar = ({ children }: { children: ReactNode }) => {
           <div
             className='relative h-12 w-12 rounded-full border-[1px] border-gray-200  cursor-pointer'
             onClick={() => setProfileDrop((prev) => !prev)}>
-            <ImageNoSSR avatar={user?.avatar} />
+            <ImageNoSSR avatar={user?.profile_image} />
             <div
               className={`${
                 profileDrop ? 'h-[90px] border-[1px]' : 'h-0 border-0'

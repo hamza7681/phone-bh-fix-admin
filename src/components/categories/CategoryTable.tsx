@@ -15,7 +15,7 @@ const CategoryTable = () => {
   const router = useRouter();
   const [visible, setVisible] = useState(false);
   const [id, setId] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getCategories = async () => {
