@@ -3,7 +3,6 @@
 import React, { FC, FormEvent, useEffect, useState } from 'react'
 import logo from '../../public/assets/logo_black.webp'
 import { SyncLoader } from 'react-spinners'
-import axios from 'axios'
 import Image from 'next/image'
 import { toast } from 'react-toastify'
 import { setCookie } from 'cookies-next'
