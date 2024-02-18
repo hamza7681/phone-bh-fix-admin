@@ -38,8 +38,12 @@ const LoginPage: FC = () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then(async (res: any) => {
         const user = await singleDataFireStore("email", email, "users");
-        dispatch(login({ token: res.user.accessToken, user: user }));
-        router.push("/dashboard");
+        if (user.role === 1) {
+          dispatch(login({ token: res.user.accessToken, user: user }));
+          router.push("/dashboard");
+        } else {
+          toast.error("Only admin can login");
+        }
         setLoading(false);
       })
       .catch((error) => {
