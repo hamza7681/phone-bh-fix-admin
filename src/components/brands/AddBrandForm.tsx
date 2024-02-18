@@ -102,7 +102,7 @@ const AddBrandForm = () => {
         </div>
         <button
           type="submit"
-          className="text-white font-semibold flex justify-center items-center h-9 w-[120px] bg-[#F0841E] text-sm py-2 rounded-[4px]"
+          className="text-white font-semibold flex justify-center items-center h-9 w-[120px] bg-[#6453F7] text-sm py-2 rounded-[4px]"
         >
           {loading ? <SyncLoader color="#ffffff" size={8} /> : "Add Brand"}
         </button>
