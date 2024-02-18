@@ -2,7 +2,6 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import FormInput from "../shared/FormInput";
 import { toast } from "react-toastify";
 import { SyncLoader } from "react-spinners";
-import { useSelector } from "react-redux";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase/config";
 
