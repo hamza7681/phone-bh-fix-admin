@@ -33,7 +33,7 @@ const CategoryAdd: FC = () => {
               child="Add Categories"
               path="/categories/category-list"
             />
-            <h1 className="text-[#F0841E] text-[22px] font-semibold">
+            <h1 className="text-[#6453F7] text-[22px] font-semibold">
               Add Category
             </h1>
             <AddCategoryForm />

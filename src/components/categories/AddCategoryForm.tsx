@@ -1,15 +1,14 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import FormInput from "../shared/FormInput";
-import Image from "next/image";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { SyncLoader } from "react-spinners";
 import { useSelector } from "react-redux";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/firebase/config";
 
 const AddCategoryForm = () => {
   const [categoryName, setCategoryName] = useState("");
-  const [loading, setLoading] = useState(true);
-  const { token } = useSelector((s: any) => s.auth);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -19,18 +18,12 @@ const AddCategoryForm = () => {
         toast.error("Please fill missing fields");
         setLoading(false);
       } else {
-        const result = await axios.post(
-          "/api/categories/add",
-          {
-            categoryName: categoryName,
-          },
-          { headers: { Authorization: token } }
-        );
-        if (result) {
-          toast.success(result.data.msg);
-          setLoading(false);
-          setCategoryName("");
-        }
+        await addDoc(collection(db, "categories"), {
+          categoryName: categoryName,
+        });
+        toast.success("Category Created");
+        setLoading(false);
+        setCategoryName("");
       }
     } catch (error: any) {
       toast.error(error.message);

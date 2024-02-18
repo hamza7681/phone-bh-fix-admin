@@ -79,7 +79,7 @@ const AddBrandForm = () => {
         <div className="flex flex-col gap-1 w-full">
           <label
             htmlFor="BrandImage"
-            className="text-[#F0841E] text-sm font-semibold"
+            className="text-[#6453F7] text-sm font-semibold"
           >
             Brand Image
           </label>
