@@ -11,7 +11,7 @@ import DeleteConfirmation from "./DeleteConfirmation";
 import { listFireStore } from "@/utils/listFireStore";
 
 const CategoryTable = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const { token } = useSelector((s: any) => s.auth);
   const router = useRouter();
   const [visible, setVisible] = useState(false);
