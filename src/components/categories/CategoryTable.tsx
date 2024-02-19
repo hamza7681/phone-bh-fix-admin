@@ -8,6 +8,7 @@ import { FaPen, FaPlus, FaTrash } from "react-icons/fa";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { useRouter } from "next/navigation";
 import DeleteConfirmation from "./DeleteConfirmation";
+import { listFireStore } from "@/utils/listFireStore";
 
 const CategoryTable = () => {
   const [categories, setCategories] = useState([]);
@@ -19,19 +20,21 @@ const CategoryTable = () => {
 
   useEffect(() => {
     const getCategories = async () => {
-      try {
-        const res = await axios.post("/api/categories/get-list", { temp: "" });
-        if (res) {
-          setCategories(res.data.categories);
+        try {
+          const categoriesData = await listFireStore("categories");
+          console.log(categoriesData);
+          setCategories(categoriesData);
+        } catch (error) {
+          console.error("Error fetching categories:", error);
         }
-      } catch (error) {
-        console.log(error);
       }
-    };
-    if (token) {
-      getCategories();
-    }
+  
+  if(token){
+    getCategories();
+  }
+
   }, [token]);
+  
 
   const brandName = (rowData: any) => {
     return <span>{rowData.categoryName}</span>;
