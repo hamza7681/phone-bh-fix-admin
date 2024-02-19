@@ -21,7 +21,7 @@ const CategoryTable = () => {
   useEffect(() => {
     const getCategories = async () => {
         try {
-          const categoriesData = await listFireStore("categories");
+          const categoriesData:any[] = await listFireStore("categories");
           console.log(categoriesData);
           setCategories(categoriesData);
         } catch (error) {
