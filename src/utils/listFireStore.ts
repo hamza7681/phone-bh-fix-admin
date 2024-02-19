@@ -7,7 +7,7 @@ import {
 } from "firebase/firestore";
 
 export const listFireStore = async (
-  collectionName: "string"
+  collectionName: string
 ) => {
   try {
     const collectionRef = collection(db, collectionName);
