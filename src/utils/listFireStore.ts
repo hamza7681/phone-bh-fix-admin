@@ -7,18 +7,11 @@ import {
 } from "firebase/firestore";
 
 export const listFireStore = async (
-  collectionName: "string",
-  queryParam: "string"
+  collectionName: "string"
 ) => {
   try {
     const collectionRef = collection(db, collectionName);
     let firestoreQuery = query(collectionRef);
-
-    if (queryParam) {
-      for (const [key, value] of Object.entries(queryParam)) {
-        firestoreQuery = where(firestoreQuery, key, "==", value);
-      }
-    }
     const querySnapshot = await getDocs(firestoreQuery);
     const data = querySnapshot.docs.map((doc) => ({
       id: doc.id,
